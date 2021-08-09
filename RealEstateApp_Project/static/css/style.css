@@ -1,0 +1,241 @@
+/*
+Blue #373f48 rgba(55, 63, 72, 1)
+Dark Blue #313840
+Gold #ca9d81
+*/
+
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url('../webfonts/subset-ProximaNova-Bold.woff2') format('woff2'),
+        url('../webfonts/subset-ProximaNova-Bold.woff') format('woff'),
+        url('../webfonts/subset-ProximaNova-Bold.ttf') format('truetype'),
+        url('../webfonts/subset-ProximaNova-Bold.svg#ProximaNova-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Source Serif Pro', serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6, .nav-link {
+    font-family: 'Proxima Nova Bold', 'Arial', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px;
+}
+
+.inner-container {
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+li a {
+    position: relative;
+}
+li.active a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 5px;
+    left: 0;
+    background: #FFFFFF;
+    visibility: Visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.btn {
+    text-transform: uppercase !important;
+    font-family: 'Proxima Nova Bold', 'Arial', sans-serif !important;
+    letter-spacing: 3px;
+}
+
+.btn-secondary {
+  color: #fff !important; }
+
+.search-btn {
+    background-color: #ca9d81;
+    color: #FFFFFF;
+}
+
+.search-btn:hover {
+    background: #87624a;
+}
+
+img {
+  width: 100%; }
+
+.logo {
+  width: 45px;
+    height: auto;
+}
+
+.navbar {
+  opacity: 0.9;
+  text-transform: uppercase;
+    height: 60px;
+}
+
+.social a {
+  margin-right: 0.4rem; }
+
+#showcase {
+    background-image: url('../img/hero-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  position: relative;
+  min-height: 650px;
+  color: #fff;
+  padding-top: 6rem; }
+  #showcase .home-search {
+    min-height: 400px;
+    position: relative;
+    border-radius: 5px; }
+  #showcase .overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 400px;
+    width: 100%;
+    background: rgba(55, 63, 72, 0.95); }
+
+#services {
+    background-image: url('../img/hero-bg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden; }
+  #services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(55, 63, 72, 0.8); }
+
+#showcase-inner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+#showcase-inner {
+    background: url('../img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+}
+
+  #showcase-inner.showcase-search {
+    min-height: 270px; }
+
+#work {
+  padding: 6rem 0; }
+
+.bg-primary {
+    background-color: #373f48;
+}
+
+.listing-preview a {
+  position: relative;
+}
+
+.listing-heading h4 {
+    font-size: 1.25rem;
+}
+
+/*.fas::before {*/
+/*    color: #ca9d81;*/
+/*}*/
+
+.pagination {
+    justify-content: center;
+}
+
+
+.realtor-photo {
+    width: 250px;
+    height: auto;
+}
+
+.form-container {
+
+}
+
+.form-title {
+    font-size: 32px;
+padding-bottom: 3%;
+    padding-top: 5%
+}
+
+.form-label {
+    font-size: 24px;
+font-weight: 700;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.images-group {
+    margin-bottom: 1.5rem;
+}
+
+.images-group label {
+    display: none !important;
+
+}
+
+@media (max-width: 991px) {
+  #showcase {
+    padding-top: 4rem; }
+    #showcase h1 {
+      font-size: 40px; }
+  .hide-md-down {
+    display: none; } }
+
+@media only screen and (max-device-width : 768px) {
+  #showcase {
+    padding-top: 3rem; }
+    #showcase h1 {
+      font-size: 40px; }
+    #showcase p {
+      display: none; }
+  #top-bar {
+    display: none; }
+  .navbar {
+      height: auto !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #showcase h1 {
+    font-size: 30px; }
+  #showcase-inner h1 {
+    font-size: 40px; } }

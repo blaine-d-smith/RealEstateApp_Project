@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+    <div class="inner-container">
+    <h3 class="form-title">Add Listing</h3>
+    <div class="form-container mb-5">
+        <form id="listing_form" method="POST" action="" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {% for hidden in listingForm.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in listingForm %}
+        <div class="form-group">
+            <label class="control-label form-label" for="id_{{ field.name }}">{{ field.label }}</label>
+
+            {{ field }}
+        </div>
+
+    {% endfor %}
+    <div class="flex-container">
+    {{ formset.management_form }}
+    {% for form in formset %}
+        <div class="form-group images-group">
+        {{ form }}
+        </div>
+    {% endfor %}
+    </div>
+    <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Submit" />
+</form>
+    </div>
+
+    </div>
+</div>
+{% endblock %}

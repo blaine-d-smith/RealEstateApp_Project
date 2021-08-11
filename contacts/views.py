@@ -3,8 +3,11 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from .models import Contact
 
-# Creates a new Contact object.
 def contacts(request):
+    """
+    Displays a form to make an inquiry. Creates a new Contact object.
+    Checks if user has already made an inquiry.
+    """
     if request.method == 'POST':
         realtor_email = request.POST['realtor_email']
         listing_id = request.POST['listing_id']
@@ -31,10 +34,9 @@ def contacts(request):
             message=message,
             user_id=user_id,
         )
-
         contact.save()
 
-        # Email
+        # Sends email if inquiry is successful.
         send_mail(
             'Listing Inquiry',
             'Message: ' + listing,
@@ -42,16 +44,19 @@ def contacts(request):
             [realtor_email],
             fail_silently=False
         )
-
         messages.success(request, 'Your message has been submitted!')
-
+        # Directs user to listings page if inquiry is successful.
         return redirect('/listings/'+listing_id)
 
 
-# Deletes a Contact object
 def delete(request, listing_id):
+    """
+    View for deleting an existing Contact object.
+    Retrieves the Contact object and deletes it.
+    """
     user_id = request.user.id
     listing_id = listing_id
     contact = Contact.objects.get(listing_id=listing_id, user_id=user_id)
     contact.delete()
+    # Directs user to dashboard if delete is successful.
     return redirect('/accounts/dashboard')

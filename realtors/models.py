@@ -1,8 +1,10 @@
 from django.db import models
 from datetime import datetime
 
-# Model that stores information about Realtor
 class Realtor(models.Model):
+    """
+    Model that stores information about a Realtor.
+    """
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d')

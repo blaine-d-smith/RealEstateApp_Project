@@ -1,8 +1,11 @@
 from django.db import models
 from datetime import datetime
 
-# Model that stores information about Contacts
 class Contact(models.Model):
+    """
+    Model that stores information about user's inquiries on listings.
+    Each Contact object is user specific.
+    """
     listing = models.CharField(max_length=200)
     listing_id = models.IntegerField()
     user_id = models.IntegerField(blank=True)

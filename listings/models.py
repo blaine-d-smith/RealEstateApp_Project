@@ -2,8 +2,11 @@ from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
 
-# Model that stores information about Listings
 class Listing(models.Model):
+    """
+    Model that stores information about a listing.
+    Each Listing object is related to a specific Realtor.
+    """
     realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=150)
     address = models.CharField(max_length=200)

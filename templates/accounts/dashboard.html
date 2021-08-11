@@ -29,16 +29,18 @@
                                     <td>{{ contact.id }}</td>
                                     <td>{{ contact.listing }}</td>
                                     <td>
-                                        <a class="btn btn-light" href="{% url 'listing' contact.listing_id %}">View Listing</a>
+                                        <a class="btn btn-light" href="{% url 'listing' contact.listing_id %}">View
+                                            Listing</a>
                                     </td>
                                     <td>
-                                        <a class="btn btn-light delete-btn" href="{% url 'delete' contact.listing_id %}">Delete</a>
+                                        <a class="btn btn-light delete-btn"
+                                           href="{% url 'delete' contact.listing_id %}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
-                        {% else %}
+                    {% else %}
                         <p>You are not following any properties.</p>
                     {% endif %}
                 </div>

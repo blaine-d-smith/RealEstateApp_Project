@@ -3,11 +3,13 @@ from .models import Listing
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .choices import price_choices, bedroom_choices, state_choices
 
-# Home page view
 def index(request):
+    """
+    List view of all Listing objects.
+    Retrieves all Listing objects and sorts them by list date.
+    Limits 6 listings per page.
+    """
     listings = Listing.objects.order_by('-list_date')
-
-    # Paginated Pages
     paginator = Paginator(listings, 6)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
@@ -18,17 +20,25 @@ def index(request):
 
     return render(request, 'listings/listings.html', context)
 
-# Displays data of specific listing
-def listing(request, listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
 
+def listing(request, listing_id):
+    """
+    View for Listing object.
+    If Listing does not exist, returns 404
+    """
+    listing = get_object_or_404(Listing, pk=listing_id)
     context = {
         'listing': listing,
     }
     return render(request, 'listings/listing.html', context)
 
-# Generates a queryset using search data
+
 def search(request):
+    """
+    Returns a list of Listing objects that match the provided query data from the user.
+    User is able to query by keyword, city, state, bedrooms and price.
+    Only 1 filter needs to match for a listing to be returned.
+    """
     queryset_list = Listing.objects.order_by('-list_date')
 
     # Keyword

@@ -3,8 +3,12 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacts.models import Contact
 
-# Creates a new Account object.
 def register(request):
+    """
+    Displays a form for new account registration.
+    Validates username and password.
+    Creates a new account with the information from the registration form.
+    """
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -13,7 +17,6 @@ def register(request):
         password = request.POST['password']
         password2 = request.POST['password']
 
-        # Password Validation
         if password == password2:
             if User.objects.filter(username=username).exists():
                 messages.error(request, 'Username already exists')
@@ -32,6 +35,7 @@ def register(request):
                     )
 
                     user.save()
+                    # Redirects to login page
                     return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
@@ -40,8 +44,11 @@ def register(request):
     else:
         return render(request, 'accounts/register.html')
 
-# View for account login
+
 def login(request):
+    """
+    Displays a login form for accounts.
+    """
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -50,6 +57,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'Welcome')
+            # Directs user to dashboard if login is successful.
             return redirect('dashboard')
         else:
             messages.error(request, 'Username/Password do not match')
@@ -58,15 +66,22 @@ def login(request):
     else:
         return render(request, 'accounts/login.html')
 
-# View for account logout
+
 def logout(request):
+    """
+    View for logging out.
+    """
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'Logged out')
+        # Directs user to home page if logout is successful.
         return redirect('index')
 
-# Dashboard view for active account
+
 def dashboard(request):
+    """
+    Dashboard view that lists all Contact objects.
+    """
     user_contacts = Contact.objects.order_by('-inquiry_date').filter(user_id=request.user.id)
 
     context = {
